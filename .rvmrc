@@ -1,0 +1,15 @@
+_RUBY=ruby-1.9.2-p290
+_PROJECT=GCalCaller
+
+export rvm_gem_options="--no-rdoc --no-ri"
+
+if [[ -s "${rvm_path:-$HOME/.rvm}/environments/$_RUBY@$_PROJECT" ]]
+then
+  . "${rvm_path:-$HOME/.rvm}/environments/$_RUBY@$_PROJECT"
+else
+  rvm --create use  "$_RUBY@$_PROJECT"
+  gem install bundler
+fi
+
+# check for and install missing gems
+[ -s Gemfile ] && bundle check || bundle install

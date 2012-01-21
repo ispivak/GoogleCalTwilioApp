@@ -1,0 +1,5 @@
+source 'http://rubygems.org'
+gem 'google-api-client'
+gem 'twilio-ruby'
+gem 'sinatra'
+gem 'thin'
