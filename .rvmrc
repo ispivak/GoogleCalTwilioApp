@@ -1,5 +1,5 @@
 _RUBY=ruby-1.9.2-p290
-_PROJECT=GCalCaller
+_PROJECT=GoogleCalTwilioApp
 
 export rvm_gem_options="--no-rdoc --no-ri"
 

@@ -8,7 +8,7 @@ require 'builder'
 
 #set some variables
 
-#phone to call (your cell)
+#phone to call (your mobile, etc)
 $myPhone = "+14151112222"
 
 #url of where the app is run
