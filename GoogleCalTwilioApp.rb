@@ -15,13 +15,15 @@ $myPhone = "+14151112222"
 $appUrl = "http://hostname:4567"
 
 #from number registered with Twilio
-$fromPhone = "+1415111222"
+$fromPhone = "+14151112222"
 
 # initialize Twilio Api
+#don't forget to edit .twilio-api.yaml
 twilio_yaml = YAML.load_file('.twilio-api.yaml')
 @tClient = Twilio::REST::Client.new(twilio_yaml["account_sid"],twilio_yaml["auth_token"])
 
 # initialize Google Api
+#don't forget to edit .google-api.yaml
 oauth_yaml = YAML.load_file('.google-api.yaml')
 client = Google::APIClient.new
 client.authorization.client_id = oauth_yaml["client_id"]
@@ -42,9 +44,6 @@ result = result = client.execute(:api_method => service.events.list,
                                  :parameters => {'calendarId' => 'primary'})
 
 #start a thread to check calendar every 3 minutes
-$sum = 0
-$description = nil
-$location = nil
 Thread.new do
   while true do
     sleep 3*60
@@ -68,17 +67,17 @@ Thread.new do
                 phoneLocation = $&
                 #check if a phone number was found in either location or description, call, and pass the number to call flow.
                 if (phoneLocation || phoneDescription)
-                  print "calling ", e.summary, "\n"
                   if phoneLocation
                     $phone = phoneLocation
                   elsif phoneDescription
                     $phone = phoneDescription
                   end
+                  print "calling ", e.summary, " ", $phone"\n"
                   @call = @tClient.account.calls.create(
-                      :from => '$fromPhone',
-                      :to => '$myPhone',
+                      :from => $fromPhone,
+                      :to => $myPhone,
                       :method => 'GET',
-                      :url => '$appUrl'
+                      :url => $appUrl
                     )
                 end
               end
@@ -96,7 +95,7 @@ Thread.new do
   end
 end
 
-#setup Twilio Call flow
+#setup Twilio call flow
   get '/' do
     builder do |xml|
       xml.instruct!
