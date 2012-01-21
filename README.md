@@ -12,7 +12,7 @@ More information: http://code.google.com/apis/calendar/v3/using.html#auth
 ### TODO
 If people find this useful it will be productized to include the following:
 
-* more phone numbers logic (non-standard formats, conference dialing, if multiple participants in meeting auto conference creation, etc)
+* more phone number logic (non-standard formats, conference dialing, if multiple participants in meeting auto conference creation, etc)
 * Heroku support
 * web front end
 * multiple users with user control panel
