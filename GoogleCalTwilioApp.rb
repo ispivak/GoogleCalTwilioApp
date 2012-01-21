@@ -60,9 +60,9 @@ Thread.new do
               if (tNow ..tNow3).cover?(Time.parse(e.start.dateTime))
                 $summary = e.summary
                 $description = e.description
+                $location = e.location
                 e.description =~ phoneRegex
                 phoneDescription = $&
-                $location = e.location
                 e.location =~ phoneRegex
                 phoneLocation = $&
                 #check if a phone number was found in either location or description, call, and pass the number to call flow.
