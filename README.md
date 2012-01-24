@@ -5,9 +5,11 @@ The application connects to Google Calendar, finds an upcoming meeting with a ph
 
 1. create a Google Application: http://code.google.com/apis/accounts/docs/OAuth2.html#Registering
 2. authorize your account for your application on the command line `google-api oauth-2-login --scope=https://www.googleapis.com/auth/calendar --client-id=CLIENT_ID --client-secret=CLIENT_SECRET`
+3. create a Twilio application: https://www.twilio.com/try-twilio?home-page
 3. setup the Twilio API: insert your `account_sid` and `auth_token` in `.twilio-api.yaml`
 
-More information: http://code.google.com/apis/calendar/v3/using.html#auth
+More information on Google Calendar Api: http://code.google.com/apis/calendar/v3/using.html#
+More information on Twilio Ruby Api: https://github.com/twilio/twilio-ruby 
 
 ### TODO
 If people find this useful it will be productized to include the following:
